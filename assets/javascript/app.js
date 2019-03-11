@@ -14,12 +14,12 @@
 //I want the game to load on start with a start button that begins the game of thrones triva. The questions will be displayed on after start button is clicked along with a global timer that will count down for the total length of the game. that timer will be 5 minutes long.  correct/incorrect answers will be logged but hidden until the question is over. once all questions have been answered display total score. if user gets a 50% say something witty etc for percentages up to 100 % if user runs out of time show white walker gif/ some dying gif from thrones and say you lose the game of thrones and end game/ restart
 
 //create var trivia with a bunch of different properties that I can call a bunch.
-
 $(document).ready(function(){
+    $('#submit').hide();
+    $('#play-again').hide();
 
-    var timeRemaining = '';
-    var correctAnswer = 0;
-    var incorrectAnswer = 0;
+    var correctAnswers = 0;
+    var incorrectAnswers = 0;
     var shuffledQuestions = [];
     var questions = [
         {
@@ -61,65 +61,108 @@ $(document).ready(function(){
                 '4'        
             ],
             correctAnswer: '4'
-        } 
+        }
     ]
-    
+
     function shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;
-      
+
         // While there remain elements to shuffle...
-        //if there are elements then we need to shuffle them.
         while (0 !== currentIndex) {
-      
+
           // Pick a remaining element...
           randomIndex = Math.floor(Math.random() * currentIndex);
           currentIndex -= 1;
-      
+
           // And swap it with the current element.
           temporaryValue = array[currentIndex];
           array[currentIndex] = array[randomIndex];
           array[randomIndex] = temporaryValue;
         }
-      
+
         return array;
     }
-    
-    $('#display-array').click(function(){
+
+    function showQuestions(){
+        $('#submit').show();
+        var questionsDiv = document.getElementById('questions');
+        for(var i = 0; i < shuffledQuestions.length; i++){
+            var questionEl = document.createElement('p');
+            questionEl.innerHTML = shuffledQuestions[i].question + '<br>';
+            var optionsContainer = document.createElement('div');
+            for(var j = 0; j < shuffledQuestions[i].possibleAnswers.length; j++){
+                var option = document.createElement('input');
+                option.setAttribute('type', 'radio');
+                option.setAttribute('value', shuffledQuestions[i].possibleAnswers[j]);
+                option.setAttribute('name', i);
+                optionsContainer.appendChild(option);
+                var text = document.createElement('span');
+                text.innerHTML = shuffledQuestions[i].possibleAnswers[j] + '<br>';
+                optionsContainer.appendChild(text);
+            }
+            questionsDiv.appendChild(questionEl);
+            questionsDiv.appendChild(optionsContainer);
+        }
+    }
+
+    function gradeQuiz(){
+        for(var i = 0; i < shuffledQuestions.length; i++){
+            var radioInput = $('input[name="' + i + '"]:checked').val();
+            if(radioInput === shuffledQuestions[i].correctAnswer){
+                correctAnswers++;
+            }
+            else{
+                incorrectAnswers++;
+            }
+        }
+        $('#score').html('<p>Correct: ' + correctAnswers + '</p><br><p>Incorrect Answers:' + incorrectAnswers + '</p>');
+    }
+    //create reset function
+    function restart(){
+        document.getElementById('questions').innerHTML = '';
         shuffledQuestions = shuffle(questions);
-        document.getElementById('array').innerHTML = JSON.stringify(shuffledQuestions);
+        showQuestions();
+        $('#start-quiz').hide();
+        correctAnswers = 0;
+        incorrectAnswers = 0;
+        $('#score').hide();
+        $('#play-again').hide();
+    }
+    //start game function
+    $('#start-quiz').click(function(){
+        document.getElementById('questions').innerHTML = '';
+        shuffledQuestions = shuffle(questions);
+        showQuestions();
     });
 
-    //create a timer
-   
+    $('#submit').click(function(){
+        gradeQuiz();
+        $('#score').show();
+        $('#play-again').show();
+    });
+
+    $('#play-again').click(function(){
+        restart();
+    });
+
+  });
+
+    //create radio buttons in the javascript and link them to the html this is just an idea 
+    // for (i = 0; i < 4; i++) {
+    //     $('<input type="radio" name="radiobtn" >Yourtext'+i+'</input>').appendTo('#container');
+    // }
+        //timeout function
+        // setTimeout(timeUp, 60000 * 5);
+
+        // function timeup(){
     
-
-
-    //create radio buttons in the javascript and link them to the html
-    for (i = 0; i < 4; i++) {
-        $('<input type="radio" name="radiobtn" >Yourtext'+i+'</input>').appendTo('#container');
-    }
-
-
-    //create a start game function
-    $('#startGame').on("click", startGame());
-
-    function startGame(){
-        shuffledQuestions = shuffle(questions);
-
-        setTimeout(timeUp, 60000 * 5);
-
-        function timeup(){
+        //     $('#time-left').append('times up');
     
-            $('#time-left').append('times up');
-    
-        };
-
-    }
-
-    //create a reset function
+        // };
 
 
-    //create a total score function
+
+
 
 
 
@@ -131,4 +174,4 @@ $(document).ready(function(){
 
 
   
-  });
+  
