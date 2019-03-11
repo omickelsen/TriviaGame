@@ -127,19 +127,33 @@ $(document).ready(function(){
         incorrectAnswers = 0;
         $('#score').hide();
         $('#play-again').hide();
+        
+        
     }
     //start game function
-    $('#start-quiz').click(function(){
+    $('#start-quiz').on("click", function(){
         document.getElementById('questions').innerHTML = '';
         shuffledQuestions = shuffle(questions);
         showQuestions();
+        $('#start-quiz').replaceWith(
+            $('#submit').click(function(){
+                gradeQuiz();
+                $('#score').show();
+                $('#play-again').show();
+                $('#submit').hide();
+
+               
+            }));
+           
     });
 
-    $('#submit').click(function(){
-        gradeQuiz();
-        $('#score').show();
-        $('#play-again').show();
-    });
+    //on the startgame click, replace the button with the submit button.
+
+    // $('#submit').click(function(){
+    //     gradeQuiz();
+    //     $('#score').show();
+    //     $('#play-again').show();
+    // });
 
     $('#play-again').click(function(){
         restart();
