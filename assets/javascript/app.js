@@ -18,6 +18,9 @@ $(document).ready(function(){
     $('#submit').hide();
     $('#play-again').hide();
 
+
+
+    
     var correctAnswers = 0;
     var incorrectAnswers = 0;
     var shuffledQuestions = [];
@@ -115,7 +118,7 @@ $(document).ready(function(){
                 incorrectAnswers++;
             }
         }
-        $('#score').html('<p>Correct: ' + correctAnswers + '</p><br><p>Incorrect Answers:' + incorrectAnswers + '</p>');
+        $('#score').html('<div>Correct: ' + correctAnswers + '</div><div>Incorrect Answers:' + incorrectAnswers + '</div>');
     }
     //create reset function
     function restart(){
@@ -129,9 +132,11 @@ $(document).ready(function(){
         $('#play-again').hide();
         
         
+        
     }
     //start game function
     $('#start-quiz').on("click", function(){
+        run();
         document.getElementById('questions').innerHTML = '';
         shuffledQuestions = shuffle(questions);
         showQuestions();
@@ -141,6 +146,7 @@ $(document).ready(function(){
                 $('#score').show();
                 $('#play-again').show();
                 $('#submit').hide();
+                stop();
 
                
             }));
@@ -157,7 +163,49 @@ $(document).ready(function(){
 
     $('#play-again').click(function(){
         restart();
+        run();
     });
+
+    
+       
+
+    var timer = 300;
+
+    var intervalId;
+
+
+    function run() {
+        clearInterval(intervalId);
+        timer = 301;
+        intervalId = setInterval(decrement, 1000);
+        
+      }
+  
+      //  The decrement function.
+      function decrement() {
+          //  Decrease number by one.
+        timer--;
+          //  Show the number in the #timer tag.
+        $("#timer").html("<h2> Time left: " + timer + "</h2>");
+    
+                if (timer === 0) {
+  
+          stop();
+         }
+      }
+  
+         function stop() {
+              clearInterval(intervalId);
+      }
+      
+        // function resetTime(){
+        //     timer = 
+
+
+        // }
+
+
+
 
   });
 
