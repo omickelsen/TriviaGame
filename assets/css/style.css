@@ -1,10 +1,26 @@
+@font-face{
+    font-family: Game-of-Thrones;
+    src:url(../images/Game\ of\ Thrones.ttf)
+}
 body{
-	background-image: url();
-	text-align: center;
+    background-image: url(http://hdqwalls.com/download/throne-game-of-thrones-qhd-1920x1080.jpg);
+    background-repeat: no-repeat;
+    text-align: center;
+    background-size: cover;
+    min-height: 100vh;
+   
 }
 
-
+.jumbotron {
+    background-color: #e9ecefa1;
+}
 
 .option{
   margin: 15px;
+}
+.title {
+color: #487bbd;
+font-size: 4vh;
+font-family: Game-of-Thrones;
+
 }

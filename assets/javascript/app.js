@@ -26,44 +26,54 @@ $(document).ready(function(){
     var shuffledQuestions = [];
     var questions = [
         {
-            question: 'What color is the sky?',
+            question: 'Where is the Iron Bank located?',
             possibleAnswers: [
-                'Green',
-                'Blue',
-                'Black',
-                'Yellow'
+                'Bravos',
+                'High Garden',
+                'Pyke',
+                'Dorne'
             ],
-            correctAnswer: 'Blue'
+            correctAnswer: 'Bravos'
         },
         {
-            question: 'What is Master Chief\'s spartan number?',
+            question: 'Which language does Daenerys Targaryen NOT speak?',
             possibleAnswers: [
-                '123',
-                '007',
-                '117',
-                '101'
+                'Common Tongue',
+                'High Valyrian',
+                'Dothraki',
+                'Old Tongue'
             ],
-            correctAnswer: '117'
+            correctAnswer: 'Old Tongue'
         },
         {
-            question: 'What is the AI called in Halo?',
+            question: "Who says, 'Chaos isn't a pit. It's a ladder'?",
             possibleAnswers: [
-                'Orie',
-                'Jess',
-                'Schmidt',
-                'Cortana'
+                'Varys',
+                'Cersei Lannister',
+                'Petyr Baelish',
+                'Tyrion Lannister'
             ],
-            correctAnswer: 'Cortana'
+            correctAnswer: 'Petyr Baelish'
         },
         {
-            question: 'How old were Spartans when they were abducted as children?',
+            question: 'Which city did Daenerys Targaryen visit first?',
             possibleAnswers: [
-                '6',
-                '5',
-                '3',
-                '4'        
+                'Meereen',
+                'Qarth',
+                'Yunkai',
+                'Astapor'        
             ],
-            correctAnswer: '4'
+            correctAnswer: 'Qarth'
+        },
+        {
+            question: 'Who has never been on the small council?',
+            possibleAnswers: [
+                'Renly Baratheon',
+                'Mace Tyrell',
+                'Cersie Lannister',
+                'Olenna Tyrell'        
+            ],
+            correctAnswer: 'Olenna Tyrell'
         }
     ]
 
@@ -90,7 +100,7 @@ $(document).ready(function(){
         $('#submit').show();
         var questionsDiv = document.getElementById('questions');
         for(var i = 0; i < shuffledQuestions.length; i++){
-            var questionEl = document.createElement('p');
+            var questionEl = document.createElement('h4');
             questionEl.innerHTML = shuffledQuestions[i].question + '<br>';
             var optionsContainer = document.createElement('div');
             for(var j = 0; j < shuffledQuestions[i].possibleAnswers.length; j++){
@@ -130,6 +140,7 @@ $(document).ready(function(){
         incorrectAnswers = 0;
         $('#score').hide();
         $('#play-again').hide();
+        run();
         
         
         
@@ -163,20 +174,20 @@ $(document).ready(function(){
 
     $('#play-again').click(function(){
         restart();
-        run();
+        
     });
 
     
        
 
-    var timer = 300;
+    var timer = 201;
 
     var intervalId;
 
 
     function run() {
         clearInterval(intervalId);
-        timer = 301;
+        timer = 201;
         intervalId = setInterval(decrement, 1000);
         
       }
@@ -189,8 +200,9 @@ $(document).ready(function(){
         $("#timer").html("<h2> Time left: " + timer + "</h2>");
     
                 if (timer === 0) {
-  
-          stop();
+                    gradeQuiz();
+                      stop();
+                      
          }
       }
   
