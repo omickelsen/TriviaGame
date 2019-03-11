@@ -74,7 +74,167 @@ $(document).ready(function(){
                 'Olenna Tyrell'        
             ],
             correctAnswer: 'Olenna Tyrell'
-        }
+        },
+        {
+            question: 'Who gives Daenerys Targaryen her dragon eggs?',
+            possibleAnswers: [
+                'Jorah Mormont',
+                'Illyrio Mopatis',
+                'Viserys Targaryen',
+                'Khal Drogo'        
+            ],
+            correctAnswer: 'Illyrio Mopatis'
+        },
+        {
+            question: 'Who has Petyr Baelish loved since he was a child?',
+            possibleAnswers: [
+                'Sansa Stark',
+                'Lysa Arryn',
+                'Catelyn Stark',
+                'Cersei Lannister'        
+            ],
+            correctAnswer: 'Catelyn Stark'
+        },
+        {
+            question: 'Who were the Unsullied NOT instructed to kill in Astapor?',
+            possibleAnswers: [
+                'The Council',
+                'The Soldiers',
+                'The Men Holding Whips',
+                'The Masters'        
+            ],
+            correctAnswer: 'The Council'
+        },
+        {
+            question: 'Which title does Viserys Targaryen NOT use?',
+            possibleAnswers: [
+                'First Of His Name',
+                'King Of The Andals And The First Men',
+                'Protector Of The Realm',
+                'Lord Of The Seven Kingdoms'        
+            ],
+            correctAnswer: 'First Of His Name'
+        },
+        {
+            question: 'What do the wildlings call those living south of the Wall?',
+            possibleAnswers: [
+                'Sheep',
+                'Kneelers',
+                'Followers',
+                'Dunces'        
+            ],
+            correctAnswer: 'Kneelers'
+        },
+        {
+            question: "Which House is supposedly 'first in battle?'",
+            possibleAnswers: [
+                'House Stark',
+                'House Baratheon',
+                'House Targaryen',
+                'House Tarly'        
+            ],
+            correctAnswer: 'House Tarly'
+        },
+        {
+            question: 'Which Stark siblings are closest in age?',
+            possibleAnswers: [
+                'Sansa And Arya',
+                'Robb And Jon',
+                'Arya And Bran',
+                'Robb And Sansa'        
+            ],
+            correctAnswer: 'Robb And Jon'
+        },
+        {
+            question: "Who does Olenna Tyrell say is very good at 'knocking men off horses with a stick'?",
+            possibleAnswers: [
+                'Loras Tyrell',
+                'Renly Baratheon',
+                'Brienne',
+                'The Mountain'        
+            ],
+            correctAnswer: 'Loras Tyrell'
+        },
+        {
+            question: "Who cuts off Jaime Lannister's hand?",
+            possibleAnswers: [
+                'Rickard Karstark',
+                'Roose Bolton',
+                'Locke',
+                'Polliver'        
+            ],
+            correctAnswer: 'Locke'
+        },
+        {
+            question: 'What infamous song plays during the Red Wedding?',
+            possibleAnswers: [
+                'The Rains Of Castamere',
+                'Its Always Summer Under The Sea',
+                'Gentle Mother, Font Of Mercy',
+                'The Bear And The Maiden Fair'        
+            ],
+            correctAnswer: 'The Rains Of Castamere'
+        },
+        {
+            question: 'Who suggests Viserys Targaryen should not join the khalasar?',
+            possibleAnswers: [
+                'Illyrio Mopatis',
+                'Daenerys Targaryen',
+                'Khal Drogo',
+                'Jorah Mormont'        
+            ],
+            correctAnswer: 'Jorah Mormont'
+        },
+        {
+            question: "Who says, 'Which do you favor, your fingers or your tongue?'",
+            possibleAnswers: [
+                'Ramsay Bolton',
+                'Locke',
+                'Joffrey Baratheon',
+                'Mance Rayder'        
+            ],
+            correctAnswer: 'Joffrey Baratheon'
+        },
+        {
+            question: "Which of the following is NOT a face of 'the Seven?'",
+            possibleAnswers: [
+                'The Maiden',
+                'The Widow',
+                'The Mother',
+                'The Stranger'        
+            ],
+            correctAnswer: 'The Widow'
+        },
+        {
+            question: "What is the name of Joffrey Baratheon's Valyrian steel blade?",
+            possibleAnswers: [
+                'Lions Tooth',
+                'Dark Sister',
+                'Hearteater',
+                'Widows Wail'        
+            ],
+            correctAnswer: 'Widows Wail'
+        },
+        {
+            question: 'Who is the Master of Whisperers?',
+            possibleAnswers: [
+                'Tyrion Lannister',
+                'Varys',
+                'Petyr Baelish',
+                'Tywin Lannister'        
+            ],
+            correctAnswer: 'Varys'
+        },
+        // {
+        //     question: '',
+        //     possibleAnswers: [
+        //         '',
+        //         '',
+        //         '',
+        //         ''        
+        //     ],
+        //     correctAnswer: ''
+        // },
     ]
 
     function shuffle(array) {
@@ -202,6 +362,7 @@ $(document).ready(function(){
                 if (timer === 0) {
                     gradeQuiz();
                       stop();
+                      
                       
          }
       }
