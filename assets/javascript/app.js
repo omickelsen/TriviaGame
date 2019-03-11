@@ -340,14 +340,14 @@ $(document).ready(function(){
     
        
 
-    var timer = 201;
+    var timer = 20;
 
     var intervalId;
 
 
     function run() {
         clearInterval(intervalId);
-        timer = 201;
+        timer = 20;
         intervalId = setInterval(decrement, 1000);
         
       }
