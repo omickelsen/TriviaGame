@@ -288,6 +288,7 @@ $(document).ready(function(){
                 incorrectAnswers++;
             }
         }
+        $('#score').show();
         $('#score').html('<div>Correct: ' + correctAnswers + '</div><div>Incorrect Answers:' + incorrectAnswers + '</div>');
     }
     //create reset function
@@ -311,43 +312,55 @@ $(document).ready(function(){
         document.getElementById('questions').innerHTML = '';
         shuffledQuestions = shuffle(questions);
         showQuestions();
-        $('#start-quiz').replaceWith(
-            $('#submit').click(function(){
-                gradeQuiz();
-                $('#score').show();
-                $('#play-again').show();
-                $('#submit').hide();
-                stop();
+
+        $('#play-again').hide();
+        $('#submit').show();
+        $('#start-quiz').hide()
+        // $('#start-quiz').replaceWith(
+            // $('#submit').click(function(){
+            //     gradeQuiz();
+            //     $('#score').show();
+            //     $('#play-again').show();
+            //     $('#submit').hide();
+            //     stop();
 
                
-            }));
+            // }));
            
     });
 
     //on the startgame click, replace the button with the submit button.
+   var flashState = false;
 
-    // $('#submit').click(function(){
-    //     gradeQuiz();
-    //     $('#score').show();
-    //     $('#play-again').show();
-    // });
+    $('#submit').click(function(){
+        if(flashState !== false){
+            flashState = false;
+            $('body').toggleClass('laser');
+        }
+        gradeQuiz();
+        $('#score').show();
+        $('#play-again').show();
+        $('#submit').hide();
+        stop();
+    });
 
     $('#play-again').click(function(){
         restart();
-        
+        //////////// $('#score').show();
     });
 
     
        
 
-    var timer = 20;
+    var timer = 180;
+ 
 
     var intervalId;
 
 
     function run() {
         clearInterval(intervalId);
-        timer = 20;
+        timer = 180;
         intervalId = setInterval(decrement, 1000);
         
       }
@@ -358,12 +371,20 @@ $(document).ready(function(){
         timer--;
           //  Show the number in the #timer tag.
         $("#timer").html("<h2> Time left: " + timer + "</h2>");
-    
-                if (timer === 0) {
-                    gradeQuiz();
-                      stop();
-                      
-                      
+
+        if(flashState === false && timer < 15 ){
+            flashState = true;
+            $('body').toggleClass('laser');
+        }
+        else if (timer === 0) {
+            flashState = false;
+            $('body').toggleClass('laser');
+            gradeQuiz();
+            stop();
+            //   restart();
+            
+            $('#submit').hide();
+            $('#play-again').show();
          }
       }
   
@@ -377,7 +398,11 @@ $(document).ready(function(){
 
         // }
 
-
+        // $(document).ready(function(){
+        //     $('.flash').click(function() {
+        //       $('body').toggleClass('laser');
+        //     });
+        //     });
 
 
   });
